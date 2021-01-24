@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import {ProductConsumer} from '../context';
 import { Button } from 'bootstrap';
+import PropTypes from 'prop-types';
 
 export default class Product extends Component {
     render() {
@@ -29,6 +30,18 @@ export default class Product extends Component {
         )
     }
 }
+
+
+Product.propTypes = {
+    product:PropTypes.shape({
+        id:PropTypes.number,
+        img:PropTypes.string,
+        title:PropTypes.string,
+        price:PropTypes.number,
+        inCart:PropTypes.bool
+
+    }).isRequired
+};
 
 const ProductWrapper = styled.div`
 .card {
@@ -84,7 +97,7 @@ const ProductWrapper = styled.div`
     transform: translate(0,0);
 }
 
-.cart-btn: hover{
+.cart-btn:hover{
     color: var(--mainBlue);
     cursor: pointer;
 }
